@@ -1,17 +1,58 @@
 // Jamaal McClinton
 
+import java.util.Scanner;
+
 public class Tests {
-    public static void main(String[] args) {
+    private double ave;
+    private int count;
+    private int score;
 
-        double testScore1 = 88.2;
-        double testScore2 = 78.9;
-        double testScore3 = 97.6;
+    public Tests() {
+        ave = 0.0;
+        count = 0;
+        score = 0;
+    }
 
-        double average = (testScore1 + testScore2 + testScore3) / 3;
+    public double getAve() {
+        return ave;
+    }
 
-        System.out.println("Test score 1: " + testScore1);
-        System.out.println("Test score 2: " + testScore2);
-        System.out.println("Test score 3: " + testScore3);
-        System.out.printf("The average of 3 test scores is: %.2f%n", average);
+    public int getCount() {
+        return count;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int newScore) {
+        score = newScore;
+    }
+
+    public void getAverage() {
+        Scanner scnr = new Scanner(System.in);
+        double sum = 0.0;
+        int scoreCount = 0;
+
+        System.out.println("Enter test score (-1 to quit):");
+        score = scnr.nextInt();
+
+        while (score != -1) {
+            sum += score;
+            scoreCount++;
+
+            System.out.println("Enter test score (-1 to quit):");
+            score = scnr.nextInt();
+        }
+
+        count = scoreCount;
+        ave = sum / count;
+    }
+
+    public String toString() {
+        return String.format(
+            "The average of the %d scores entered is %.2f.",
+            count, ave
+        );
     }
 }
