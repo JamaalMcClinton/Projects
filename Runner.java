@@ -6,15 +6,15 @@ import java.util.Scanner;
 
 public class Runner {
     public static void main(String[] args){
+
         //instantiate a Calc object
         Calc myCalculator = new Calc();
 
-        //get user input for two numbers
+        //get user input for two numbers safely
         Scanner scan = new Scanner(System.in);
-        System.out.println("Please enter the first number: ");
-        double n1 = scan.nextDouble();
-        System.out.println("Please enter the second number: ");
-        double n2 = scan.nextDouble();
+
+        double n1 = myCalculator.getValidNumber(scan, "Please enter the first number: ");
+        double n2 = myCalculator.getValidNumber(scan, "Please enter the second number: ");
 
         //pass the numbers to the Calc object
         myCalculator.setNum1(n1);
@@ -28,11 +28,9 @@ public class Runner {
         System.out.println("Calling num2 get method: " + myCalculator.getNum2());
 
         //calling Calc methods directly
-        //can use a local variable for sum if you need that value for another calculation
         double sum = myCalculator.add();
         System.out.println("The sum is: " + sum);
 
-        //or if you don't, then just display the difference, product and quotient
         System.out.println("The difference is: " + myCalculator.subtract());
         System.out.println("The product is: " + myCalculator.multiply());
         System.out.println("The quotient is: " + myCalculator.divide());

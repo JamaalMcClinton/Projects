@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Calc {
     private double num1;
     private double num2;
@@ -37,6 +39,17 @@ public class Calc {
 
     public double divide() {
         return num1 / num2;
+    }
+
+    public double getValidNumber(Scanner scan, String prompt) {
+        System.out.println(prompt);
+
+        while (!scan.hasNextDouble()) {
+            System.out.println("Invalid input. Please enter a number:");
+            scan.next();
+        }
+
+        return scan.nextDouble();
     }
 
     public String toString() {
