@@ -1,55 +1,31 @@
+import javax.swing.JOptionPane;
+
+/**
+ * This program demonstrates the Exam class,
+ * which extends the Assessment class.
+ */
+
 public class Runner {
-    //exercises the ArrList class
+
     public static void main(String[] args) {
-        //instantiate IntArray object
-        IntArray iArr = new IntArray(10);
-        int leng = iArr.size();
+        String input;
+        int questions;
+        int missed;
 
-        //display size of array == number of array elements
-        System.out.println("The number of array elements is: " + leng);
+        input = JOptionPane.showInputDialog("How many questions are on the exam?");
+        questions = Integer.parseInt(input);
 
-        //this method fills array with random numbers
-        iArr.fillRand();
-        //print out array to prove the fillRand method worked
-        System.out.println("Array with 10 elements filled with random numbers between 1 and 6");
-        System.out.println(iArr);
+        input = JOptionPane.showInputDialog("How many questions did the student miss?");
+        missed = Integer.parseInt(input);
 
-        //set a certain array element to a new value
-        iArr.set(5, 6789);
+        Exam exam = new Exam(questions, missed);
 
-        //display the value of the that new value at position 5 (you can change this index)
-        System.out.println("The value of array element 5 is: " + iArr.get(5));
+        String message = "Each question counts " + exam.getPointsEach();
+        message += " points.\nThe exam score is " + exam.getScore();
+        message += "\nThe exam grade is " + exam.getGrade();
 
-        //display all array data, watch for the changed element!
-        System.out.println(iArr);
+        JOptionPane.showMessageDialog(null, message);
 
-        //clear the array == delete the values and all the elements
-        iArr.clear();
-
-        //check if array is now empty
-        if (iArr.isEmpty()) {
-            System.out.println("iArr is empty\n");
-        }
-
-        //allocate new array elements
-        iArr = new IntArray(100);
-
-        //this method fills array with random numbers
-        iArr.fillRand();
-        //print out array to prove the fillRand method worked
-
-        System.out.println("Array with 100 elements filled with random numbers between 1 and 6");
-        System.out.println(iArr);
-
-        //sort the array
-        if(!iArr.isEmpty()){
-            iArr.sort();
-        }
-        else System.out.println("Array is empty, nothing to sort");
-
-        //print out array to prove the sort method worked
-        System.out.println("Array after sorting\n");
-        System.out.println(iArr);
-
+        System.exit(0);
     }
 }
